@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى ريماس - عالمي الخاص</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7e2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .poem-font {
+            font-family: 'Amiri', serif;
+        }
+        .title-font {
+            font-family: 'Aref+Ruqaa', serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(251, 113, 133, 0.2);
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .heart {
+            position: absolute;
+            color: #fb7185;
+            animation: float 6s infinite linear;
+            opacity: 0.6;
+            z-index: -1;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+        .step { display: none; }
+        .step.active { display: flex; }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+    <!-- قلوب عائمة -->
+    <div id="heart-container"></div>
+
+    <!-- واجهة تسجيل الدخول -->
+    <div id="step-auth" class="step active w-full max-w-md flex-col items-center">
+        <div class="glass-card p-8 rounded-3xl w-full text-center fade-in">
+            <div class="mb-6 text-pink-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">أدخل كلمة السر للدخول</h1>
+            <input type="text" id="password" placeholder="اكتب كلمة السر هنا..." 
+                   class="w-full p-4 rounded-xl border-2 border-pink-200 focus:border-pink-500 outline-none text-center text-lg mb-4 transition-all">
+            <button onclick="checkPassword()" 
+                    class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:scale-105">
+                تحقق
+            </button>
+            <p id="error-msg" class="text-red-500 mt-4 hidden">كلمة السر خاطئة يا بطل ❤️ جرب كلمة تانية!</p>
+        </div>
+    </div>
+
+    <!-- الصفحة الأولى: أشعار ريماس -->
+    <div id="step-1" class="step w-full max-w-2xl flex-col items-center">
+        <div class="glass-card p-8 rounded-3xl w-full text-center fade-in">
+            <h2 class="title-font text-4xl text-pink-600 mb-8 underline decoration-pink-200">إلى ريماس</h2>
+            <div class="poem-font text-xl text-gray-700 leading-relaxed mb-8 space-y-4">
+                <p>"ريماس.. يا من سكنتِ ثنايا الروح"</p>
+                <p>"في حضوركِ ينجلي كل ألمٍ وتبوح الأماني"</p>
+                <p>"أنتِ النور الذي أضاء دربي، واللحن الذي يطرب قلبي"</p>
+                <p>"ما كنتُ قبلكِ أعرفُ الهوى، والآن أنتِ كل ما أهوى"</p>
+            </div>
+            <button onclick="nextStep(2)" 
+                    class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-3 rounded-full shadow-md transition-all">
+                التالي
+            </button>
+        </div>
+    </div>
+
+    <!-- الصفحة الثانية: التاريخ -->
+    <div id="step-2" class="step w-full max-w-2xl flex-col items-center">
+        <div class="glass-card p-8 rounded-3xl w-full text-center fade-in">
+            <div class="text-pink-500 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 leading-loose mb-10 px-4">
+                بـ <span class="text-pink-600 underline">23/11</span> حكينا أول مرة <br>
+                ومن هاد اليوم م توقعت يصير عندي كل هالجمال بحياتي
+            </p>
+            <button onclick="nextStep(3)" 
+                    class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-3 rounded-full shadow-md transition-all">
+                التالي
+            </button>
+        </div>
+    </div>
+
+    <!-- الصفحة الثالثة: المربعات -->
+    <div id="step-3" class="step w-full max-w-4xl flex-col items-center">
+        <h2 class="title-font text-3xl text-gray-800 mb-8">أنتِ بالنسبة لي...</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 w-full">
+            <div class="glass-card p-6 rounded-2xl text-center transform hover:-translate-y-2 transition-all">
+                <span class="text-3xl block mb-2">👑</span>
+                <span class="text-xl font-bold text-pink-600">أميرتي</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center transform hover:-translate-y-2 transition-all">
+                <span class="text-3xl block mb-2">👧</span>
+                <span class="text-xl font-bold text-pink-600">طفلتي</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center transform hover:-translate-y-2 transition-all">
+                <span class="text-3xl block mb-2">🎀</span>
+                <span class="text-xl font-bold text-pink-600">بنوتي</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center transform hover:-translate-y-2 transition-all col-span-2 md:col-span-1">
+                <span class="text-3xl block mb-2">❤️</span>
+                <span class="text-xl font-bold text-pink-600">حبيبة قلبي</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center transform hover:-translate-y-2 transition-all col-span-2 md:col-span-2">
+                <span class="text-3xl block mb-2">💍</span>
+                <span class="text-xl font-bold text-pink-600">ومرتي</span>
+            </div>
+        </div>
+        <div class="mt-12 text-gray-500 italic">
+            أحبكِ ريماس.. دائماً وأبداً
+        </div>
+    </div>
+
+    <script>
+        // دالة إنشاء القلوب العائمة
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            const heartIcons = ['❤️', '💖', '💗', '💕'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 500);
+        }
+
+        // دالة التحقق من كلمة السر
+        function checkPassword() {
+            const pass = document.getElementById('password').value.trim();
+            const error = document.getElementById('error-msg');
+            
+            // كلمة السر الجديدة: بحبك
+            if (pass === 'بحبك') {
+                document.getElementById('step-auth').classList.remove('active');
+                document.getElementById('step-1').classList.add('active');
+                error.classList.add('hidden');
+            } else {
+                error.classList.remove('hidden');
+                document.getElementById('password').classList.add('border-red-500');
+                setTimeout(() => {
+                    document.getElementById('password').classList.remove('border-red-500');
+                }, 500);
+            }
+        }
+
+        // دالة التنقل بين الصفحات
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNumber).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
+
